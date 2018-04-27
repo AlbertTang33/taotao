@@ -1,0 +1,91 @@
+<html>
+
+	<head>
+		<meta charset="GBK">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=0">
+
+		<title>查询订单</title>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/amazeui.min.js"></script>
+		<script type="text/javascript" src="myjs/login.js"></script>
+
+		
+	</head>
+		<body>
+		
+            
+					   <div  align="center"><font color="red"  size="10">全部订单</font> </div>
+					  <div align="center"><input id="text1" type="text" placeholder="根据用户名查询订单">
+					<button onclick="load()">搜索<button></div>
+			<br/>
+
+				
+			
+				<table id="ct" align="center" border="1" width="800px">	
+				
+				
+			<!-- 		<tr>	<th>用户名</th>
+							<th>用户ID</th>
+							<th>商品图标</th>
+							<th>商品名</th>   
+							<th>商品属性</th>
+							<th>商品价格</th>
+							<th>商品评价</th>
+					</tr> -->
+				
+					
+					<%-- 	<c:forEach var="item"  items="${mylist}">
+						<tr>	
+						
+								<td>
+								${item.u_name}
+								</td>
+								
+								<td>
+								${item.u_id}
+								</td>
+												
+								<td>	
+								<img src="ImgServlet?fileName=${item.g_img}"  width="100px" height="100px" >								
+								</td>
+
+								<td>										
+								<p class="item-basic-info">${item.g_name}</p>										
+								</td>		
+									
+								<td>	
+								<span>颜色：洛阳牡丹</span>
+								<span>包装：裸装</span>
+								</td>
+															
+								<td>
+								<strong>${item.g_price}</strong>
+								</td>	
+								
+								<td>
+							<c:if test="${item.gpj_content==null || item.gpj_content ==''}">
+							<a  target="_top" class="h">该商品暂未评价！</a>
+							</c:if>
+						<c:if test="${item.gpj_content!=null}">
+							<a target="_top" class="h">${item.gpj_content}</a>
+						</c:if>
+								</td>
+																									 								
+ 							</tr>
+						</c:forEach> --%>
+								
+						</table>	
+						
+					<div class="clear"></div>
+
+					<!--分页 -->	
+						<div align="center">
+						<a href="javascript:load(1)">首页</a>&nbsp;&nbsp;&nbsp;
+						<a href="javascript:load(2)">上一页</a>&nbsp;&nbsp;&nbsp;
+						<a href="javascript:load(3)">下一页</a>&nbsp;&nbsp;&nbsp;
+						<a href="javascript:load(4)">尾页</a>&nbsp;&nbsp;&nbsp;
+					   </div>
+								
+	</body>
+</html>

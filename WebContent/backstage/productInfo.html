@@ -1,0 +1,164 @@
+<html >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>商品信息管理</title>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="myjs/login.js"></script>
+<script type="text/javascript" src="myjs/public.js"></script>
+
+<link href="./backCss/css.css" rel="stylesheet" type="text/css" />
+<link href="./backCss/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/xiangmu.js"></script>
+<script type="text/javascript" src="<%=basePath %>myjs/goodsManage.js"></script>
+</head>
+<SCRIPT language=JavaScript>
+function selectAll(){
+	var obj = document.fom.elements;
+	for (var i=0;i<obj.length;i++){
+		if (obj[i].name == "GoodsId"){
+			obj[i].checked = true;
+		}
+	}
+}
+
+
+function unselectAll(){
+	var obj = document.fom.elements;
+	for (var i=0;i<obj.length;i++){
+		if (obj[i].name == "GoodsId"){
+			if (obj[i].checked==true) obj[i].checked = false;
+			else obj[i].checked = true;
+		}
+	}
+}
+
+function link(){
+    document.getElementById("fom").action="xiangmu.htm";
+   document.getElementById("fom").submit();
+}
+
+function on_load(){
+	var loadingmsg=document.getElementById("loadingmsg");
+	var mainpage=document.getElementById("mainpage");
+	loadingmsg.style.display="";
+	mainpage.style.display="none";
+	
+	loadingmsg.style.display="none";
+	mainpage.style.display="";
+}
+</SCRIPT>
+
+<body onload="on_load()">
+<form name="fom" id="fom" method="post" action="">
+<table id="mainpage" width="100%" table="tableFrame" border="0" cellspacing="0" cellpadding="0">
+
+  <tr>
+    <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td height="62" background="./backImages/nav04.gif">
+          
+		   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+		  <tr>
+			<td width="21"><img src="./backImages/ico07.gif" width="20" height="18" /></td>
+			<td width="550">查看商品：按商品类型:
+			 	<select name = "" id = "queryPage">
+			 	
+			 	</select></td>
+			<td> <input name="button" type="button" class="right-button02" value="查询" onclick="javascript:goodsqueryList()" /></td>
+			 <td width="132" align="left"><a href="goodinfo.html">
+			   <input name="button" type="button" class="right-button07" value="首页" /></a></td>	
+		  </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td><table id="subtree1" style="DISPLAY: " width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td><table id="subtree12" width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+
+          	 <tr>
+               <td height="20">
+	              <input name="button" type="button" class="right-button08" value="上架"  onclick="deleteGoods()"/>
+	              <input name="button" type="button" class="right-button08" value="下架" onclick="addInfo();"/></td>
+          	 </tr>
+              <tr>
+                <td height="40" class="font42">
+                <table id = "tableGoods" width="100%" border="0" cellpadding="4" cellspacing="1" bgcolor="#464646" class="newfont03">
+				 
+					
+					
+                </table></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table>
+</table>
+
+       <table id="page" width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
+
+          </table> 
+</form>
+
+<div id="loadingmsg" style="width:100px; height:18px; top:0px; display:none;">
+	<img src="./backImages/loadon.gif" />
+</div>
+<script type="text/javascript">
+	function getPageValue(){
+		var num = document.getElementById("goPage").value;
+		window.location.href="${pageUrl}&pageNumber="+num;
+		
+}
+	//��Ʒ�¼�
+	function deleteGoods(){
+		
+		var a = document.getElementsByName("g_id");
+		for(var i= 0;i<a.length;i++){
+			if(a[i].checked){
+			var gid = a[i].value;
+			break;
+		}
+	}
+		window.location.href ="goodsNotOnSale.aspx?&g_id="+gid;
+}
+	
+	function queryInfo(id){
+		var a = id;
+	
+		window.location.href = "queryGoods.aspx?&g_id="+a;
+		
+}
+	function updateInfo(id){
+		var a = id;
+		window.location.href = "initUpdateGoods.aspx?&g_id="+a;
+		
+}
+
+	function deleteInfo(){
+		var a = document.getElementsByName("g_id");
+		for(var i= 0;i<a.length;i++){
+			if(a[i].checked){
+			var gid = a[i].value;
+			break;
+		}
+	}
+		window.location.href = "deleteGoods.aspx?&g_id="+gid;
+}
+	
+	function addInfo(){
+		window.location.href = "addGoods.aspx?hide=initAdd";
+}
+	function indexjsp(){
+		window.location.href = "goodsList.aspx";
+}
+	
+	function queryButton(){
+		var co = document.getElementById("queryCoid").value;
+		window.location.href = "goodsQueryByName.aspx?&stid="+co;
+		
+	}
+	
+</script>
+</body>
+
+</html>
